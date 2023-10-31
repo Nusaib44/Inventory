@@ -5,22 +5,22 @@ import "gorm.io/gorm"
 type Product struct {
 	gorm.Model
 
-	Name           string `json:"name"`
-	Code           int    `json:"code"`
-	Category       int    `gorm:"foreignkey"`
-	Brand          string
-	Description    string
-	Price          int64 `json:"price"`
-	WholesalePrice int64
-	Stock          int64 `json:"stock"`
-	TotalOrder     int
-	StockPurchased int
-	Profit         int64
-	Provider       int `gorm:"foreignkey"`
-	WhareHouse     int `gorm:"foreignkey"`
-	MainImg        string
-	Img2           string
-	Img3           string
+	Name             string `json:"name"`
+	Category         int    `gorm:"foreignkey"`
+	Brand            string
+	ShortDescription string
+	Description      string
+	Price            int64 `json:"price"`
+	WholesalePrice   int64
+	Stock            int64 `json:"stock"`
+	TotalOrder       int
+	StockPurchased   int
+	Revenue          int
+	Provider         int `gorm:"foreignkey"`
+	WhareHouse       int `gorm:"foreignkey"`
+	MainImg          string
+	Img2             string
+	Img3             string
 }
 
 type Order struct {
@@ -37,11 +37,9 @@ type Order struct {
 
 type Return struct {
 	gorm.Model
-	OrderId    int `gorm:"foreignkey"`
-	Quantity   int
-	TotalPrice int
-	PaymentType   string
-	Status     string
+	OrderId     int `gorm:"foreignkey"`
+	Quantity    int
+	TotalPrice  int
+	PaymentType string
+	Status      string
 }
-
-

@@ -6,17 +6,17 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type responce struct {
+type response struct {
 	Status  bool
-	Message string
 	Time    time.Time
+	Message string
 	Eroors  interface{}
 	Data    interface{}
 }
 
 func ErrorMessage(g *gin.Context, code int, message string, errors, data interface{}) {
 
-	res := responce{
+	res := response{
 		Status:  false,
 		Message: message,
 		Time:    time.Now(),
@@ -28,7 +28,7 @@ func ErrorMessage(g *gin.Context, code int, message string, errors, data interfa
 }
 
 func Surcessmessage(g *gin.Context, message string, data interface{}) {
-	res := responce{
+	res := response{
 		Status:  true,
 		Message: message,
 		Time:    time.Now(),
