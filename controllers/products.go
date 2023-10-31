@@ -12,6 +12,7 @@ import (
 	"github.com/google/uuid"
 )
 
+// list product
 func ListProducts(g *gin.Context) {
 
 	var products []Response.ProductListing
@@ -23,6 +24,7 @@ func ListProducts(g *gin.Context) {
 	Surcessmessage(g, "displaying products", products)
 }
 
+// list product by id
 func ListProductByID(g *gin.Context) {
 
 	var product models.Product
@@ -39,6 +41,7 @@ func ListProductByID(g *gin.Context) {
 
 }
 
+// add product
 func AddProducts(g *gin.Context) {
 
 	var product models.Product
@@ -90,6 +93,7 @@ func AddProducts(g *gin.Context) {
 
 }
 
+// edit product
 func EditProduct(g *gin.Context) {
 
 	var product models.Product
@@ -100,4 +104,16 @@ func EditProduct(g *gin.Context) {
 	db.DB.Model(&product).Updates(product)
 
 	Surcessmessage(g, "product edited surcessfully", product)
+}
+
+// ddelete product
+func DeleteProdduct(g *gin.Context) {
+
+	var product models.Product
+
+	param := g.Query("id")
+	id, _ := strconv.Atoi(param)
+
+	db.DB.Raw("SELECT *FROM products WHERE id=?", id).Scan(&product)
+	db.DB.Raw("DELETE FORM products WHERE id=?", id)
 }
