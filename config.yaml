@@ -1,0 +1,6 @@
+
+app:
+  port: 3070
+
+database:
+  db_url: postgresql://admin:nusaib4244@localhost:5432/postgres?sslmode=disable
