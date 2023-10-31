@@ -98,10 +98,15 @@ func EditProduct(g *gin.Context) {
 
 	var product models.Product
 
+	param := g.Query("id")
+	id, _ := strconv.Atoi(param)
+	product.ID = uint(id)
+
 	if err := g.Bind(&product); err != nil {
 		ErrorMessage(g, 200, "error while binding", err.Error(), product)
 	}
 	db.DB.Model(&product).Updates(product)
+	db.DB.Raw("SELECT * FROM products WHERE id=?", id).Scan(&product)
 
 	Surcessmessage(g, "product edited surcessfully", product)
 }
@@ -116,4 +121,6 @@ func DeleteProdduct(g *gin.Context) {
 
 	db.DB.Raw("SELECT *FROM products WHERE id=?", id).Scan(&product)
 	db.DB.Raw("DELETE FORM products WHERE id=?", id)
+
+	Surcessmessage(g, "product deleted surcesfully", product)
 }

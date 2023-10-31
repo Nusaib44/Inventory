@@ -11,8 +11,8 @@ func Routes(g *gin.Engine) {
 	g.GET("/listproduct", controllers.ListProducts)
 	g.GET("/listproductbyid", controllers.ListProductByID)
 	g.POST("/addproduct", controllers.AddProducts)
-	g.PATCH("/editproduct")
-	g.DELETE("/deleteproduct")
+	g.PATCH("/editproduct", controllers.EditProduct)
+	g.DELETE("/deleteproduct", controllers.DeleteProdduct)
 
 	g.GET("/listprovider")
 	g.GET("/listproviderbyid")
