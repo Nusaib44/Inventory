@@ -89,3 +89,15 @@ func AddProducts(g *gin.Context) {
 	Surcessmessage(g, "Product added Surcessfully", product)
 
 }
+
+func EditProduct(g *gin.Context) {
+
+	var product models.Product
+
+	if err := g.Bind(&product); err != nil {
+		ErrorMessage(g, 200, "error while binding", err.Error(), product)
+	}
+	db.DB.Model(&product).Updates(product)
+
+	Surcessmessage(g, "product edited surcessfully", product)
+}
