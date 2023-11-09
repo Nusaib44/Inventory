@@ -52,7 +52,7 @@ func AddProducts(g *gin.Context) {
 	body := g.PostForm("product")
 	err := json.Unmarshal([]byte(body), &product)
 	if err != nil {
-		ErrorMessage(g, 200, "failed to unmarshal the body", err.Error(), product)
+		ErrorMessage(g, 200, "Failed to unmarshal the body", err.Error(), product)
 	}
 
 	// taking main img
