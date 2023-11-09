@@ -1,7 +1,7 @@
 package db
 
 import (
-	"inventory/pkg/models/Database"
+	models "inventory/pkg/models/Database"
 	"log"
 
 	"gorm.io/driver/postgres"
@@ -23,5 +23,6 @@ func Init(url string) {
 	db.AutoMigrate(&models.Return{})
 	db.AutoMigrate(&models.Order{})
 	db.AutoMigrate(&models.Provider{})
+	db.AutoMigrate(&models.Payment{})
 	db.AutoMigrate(&models.Area{})
 }

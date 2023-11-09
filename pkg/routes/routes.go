@@ -32,11 +32,11 @@ func Routes(g *gin.Engine) {
 	g.POST("/addreturn")
 	g.PATCH("/editreturn")
 
-	g.GET("/listpayment_methods")
-	g.GET("/listpayment_method_byid")
-	g.POST("/addpayment_method")
-	g.PATCH("/editpayment_method")
-	g.DELETE("/deletepayment_method")
+	g.GET("/listpayment_methods", controllers.ListPayment)
+	g.GET("/listpayment_method_byid", controllers.ListPaymentById)
+	g.POST("/addpayment_method", controllers.AddPayment)
+	g.PATCH("/editpayment_method", controllers.EditPayment)
+	g.DELETE("/deletepayment_method", controllers.DeletePaymentMethod)
 
 }
 

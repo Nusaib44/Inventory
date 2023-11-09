@@ -45,7 +45,6 @@ func ListProductByID(g *gin.Context) {
 func AddProducts(g *gin.Context) {
 
 	var product models.Product
-	var productimages []string
 	var homepic string
 
 	// taking product information
@@ -68,12 +67,11 @@ func AddProducts(g *gin.Context) {
 		product.MainImg = homepic
 	}
 
-	//taking other images
-	file := g.Request.MultipartForm.File["image"]
+	//taking imag2
+	file := g.Request.MultipartForm.File["image2"]
 	for _, img := range file {
-		exrention := filepath.Ext(img.Filename)
-		image := "product" + uuid.New().String() + exrention
-		productimages = append(productimages, image)
+		extention := filepath.Ext(img.Filename)
+		image := "product" + uuid.New().String() + extention
 		g.SaveUploadedFile(img, "./public/"+image)
 		if product.Img2 == "" {
 			product.Img2 = image
@@ -100,12 +98,12 @@ func EditProduct(g *gin.Context) {
 
 	param := g.Query("id")
 	id, _ := strconv.Atoi(param)
-	product.ID = uint(id)
+	println(id, "-----------------------///////////////////-------------")
 
 	if err := g.Bind(&product); err != nil {
 		ErrorMessage(g, 200, "error while binding", err.Error(), product)
 	}
-	db.DB.Model(&product).Updates(product)
+	db.DB.Model(&product).Where("ID=?", id).Updates(product)
 	db.DB.Raw("SELECT * FROM products WHERE id=?", id).Scan(&product)
 
 	Surcessmessage(g, "product edited surcessfully", product)
@@ -120,7 +118,7 @@ func DeleteProdduct(g *gin.Context) {
 	id, _ := strconv.Atoi(param)
 
 	db.DB.Raw("SELECT *FROM products WHERE id=?", id).Scan(&product)
-	db.DB.Raw("DELETE FORM products WHERE id=?", id)
+	db.DB.Raw("DELETE FROM products WHERE id=?", id).Scan(&product)
 
 	Surcessmessage(g, "product deleted surcesfully", product)
 }
