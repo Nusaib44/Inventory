@@ -14,11 +14,11 @@ func Routes(g *gin.Engine) {
 	g.PATCH("/editproduct", controllers.EditProduct)
 	g.DELETE("/deleteproduct", controllers.DeleteProdduct)
 
-	g.GET("/listprovider")
-	g.GET("/listproviderbyid")
-	g.POST("/addprovider")
-	g.PATCH("/editprovider")
-	g.DELETE("/deleteprovider")
+	g.GET("/listprovider",controllers.ListProvidor)
+	g.GET("/listproviderbyid",controllers.ListProvidorbyId)
+	g.POST("/addprovider",controllers.AddProvidor)
+	g.PATCH("/editprovider",controllers.EditProvidor)
+	g.DELETE("/deleteprovider",controllers.DeleteProvidor)
 
 	g.GET("/listorder")
 	g.GET("/listorderbyid")

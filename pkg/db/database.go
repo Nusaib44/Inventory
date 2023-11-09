@@ -22,7 +22,7 @@ func Init(url string) {
 	db.AutoMigrate(&models.Product{})
 	db.AutoMigrate(&models.Return{})
 	db.AutoMigrate(&models.Order{})
-	db.AutoMigrate(&models.Provider{})
+	db.AutoMigrate(&models.Providor{})
 	db.AutoMigrate(&models.Payment{})
 	db.AutoMigrate(&models.Area{})
 }

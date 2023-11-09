@@ -9,7 +9,7 @@ type ProductListing struct {
 	MainImg          string
 	Provider         string
 }
-type merchentListing struct {
+type ProvidorListing struct {
 	Name        string
 	CompanyName string
 	Pincode     int
@@ -29,7 +29,7 @@ type ProductByID struct {
 	TotalOrder       int
 	StockPurchased   int
 	Revenue          int
-	Provider         merchentListing
+	Provider         ProvidorListing
 	WhareHouse       string
 	MainImg          string
 	Img2             string

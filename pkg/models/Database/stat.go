@@ -2,7 +2,7 @@ package models
 
 import "gorm.io/gorm"
 
-type Provider struct {
+type Providor struct {
 	gorm.Model
 	Name        string
 	CompanyName string
@@ -11,9 +11,9 @@ type Provider struct {
 	PhoneNumber string `gorm:"unique"`
 	Paid        int
 	Due         int
-	Order       string
-	Return      string
-	Cancel      string
+	Order       int
+	Return      int
+	Cancel      int
 }
 
 type Area struct {
